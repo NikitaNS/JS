@@ -1,27 +1,25 @@
-//Функция создания загаданного числа
+const RANDOM_NUMBER_RANGE = 21;
+const RANDON_NUMBER = createRandomNumber(RANDOM_NUMBER_RANGE);
+
+while(true) {
+    const GAME_RESULT = checkUserNumber(RANDON_NUMBER,getUserNumber())
+    console.log(GAME_RESULT)
+    if(GAME_RESULT === true) {
+        break;
+    }
+}
+
+//Получаем пользовательское число
 function createRandomNumber (randomNumberRange) {
     return (Math.floor(Math.random() * randomNumberRange));
 };
 
-const randomNumber = createRandomNumber(21)
-
-//Получаем пользовательское число
-function getUserNumber() {
-    let userNumber = prompt('Введи число');
-    if (userNumber === null) {
-        return;
-    }
-    //Проверяем ввод пользователя на правильность(должен ввести число)
-    if (!isNaN(parseFloat(userNumber)) && isFinite(userNumber)) {
-        return (Number(userNumber));
-    }
-    else {
-        getUserNumber();
-    }
-}
-
-//Проверяем пользовательске число с загаданным(randomNumber) числом
+//Проверяем пользовательске число с загаданным
 function checkUserNumber(randomNumber, userNumber) {
+    console.log(RANDON_NUMBER)
+    if (userNumber === null) {
+        return true;
+    }
     if (userNumber > randomNumber) {
         alert('Много');
         return false;
@@ -34,16 +32,17 @@ function checkUserNumber(randomNumber, userNumber) {
         alert('Угадал');
         return true;
     }
+    
 }
 
-//Функция игры
-function game() {
-    //Узнаем результат функции проверки: пользовательсое число = загпдпнному?
-    let gameResult = checkUserNumber(randomNumber,getUserNumber())
-    //Если не угада- запускаем еще одну попытку
-    if (gameResult == false){
-        game();
+function getUserNumber() {
+    let userNumber = prompt('Введи число');
+    if (userNumber === null) {
+        return userNumber;
+    }
+    //Проверяем ввод пользователя на правильность(должен ввести число)
+    if (!isNaN(parseFloat(userNumber)) && isFinite(userNumber)) {
+        return (Number(userNumber));
     }
 }
 
-game()
