@@ -2,9 +2,8 @@ const RANDOM_NUMBER_RANGE = 21;
 const RANDON_NUMBER = createRandomNumber(RANDOM_NUMBER_RANGE);
 
 while(true) {
-    const GAME_RESULT = checkUserNumber(RANDON_NUMBER,getUserNumber())
-    console.log(GAME_RESULT)
-    if(GAME_RESULT === true) {
+    let gameResult = checkUserNumber(RANDON_NUMBER,getUserNumber())
+    if(gameResult === true) {
         break;
     }
 }
@@ -16,7 +15,6 @@ function createRandomNumber (randomNumberRange) {
 
 //Проверяем пользовательске число с загаданным
 function checkUserNumber(randomNumber, userNumber) {
-    console.log(RANDON_NUMBER)
     if (userNumber === null) {
         return true;
     }
